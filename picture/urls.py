@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, include, url
 from views import login_view , signin , start_template
 import settings
-from views import image_explain ,process_img
+from views import image_explain ,process_img,contact,about
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -28,4 +28,6 @@ urlpatterns = patterns('',
     # just explain why I start this project
     url('^image_explain/$' , image_explain),
     url('^process_img/$' , process_img),
+    url('^contact/$' , contact),
+    url('^about/$' , about),
 )
