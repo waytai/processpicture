@@ -47,5 +47,18 @@ def process_img(request):
     pass
     #return render_to_response('hero.html' , context_instance=RequestContext(request))
     
+@csrf_exempt
+def contact(request):
+    return render_to_response('contact.html',context_instance=RequestContext(request))
+
+@csrf_exempt
+def about(request):
+    return render_to_response('about.html',context_instance=RequestContext(request))
+
+
+
+
+    
+    
     
     
