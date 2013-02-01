@@ -1,0 +1,43 @@
+{% extends "starter_template.html" %}
+{% block jscript %}
+function load_imag()
+{
+	 $(document).ready(function(){
+	 $("#pre_process").attr({src:"/img/concert.jpg"});
+	 
+	 if(!($("#ddd").text())){
+	 $("#ddd").append("<b>弹奏</b>");
+	}
+	 
+	}
+	)
+}
+
+function process_pic()
+{
+	$(document).ready(function(){
+	$("#after_process").attr({src:"/img/save_concert.jpg"});
+}
+	)
+
+}
+
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block content_first %}
+<h3 style="padding-left:20px;">I start this project just for some image processes !</h3>
+<div style="padding-left:20px;" class = "start_template">
+	<h4>要处理的图片</h4>
+	<p></p>
+	<form style="float:left;">
+		<input type='button' value='加载图片' onclick="load_imag()" />
+	</form>
+	<form  action="/process_img/" method="post">
+		<input style="margin-left:530px;"   type='button'  onclick="process_pic()" value='处理图片'>
+	</form>
+	<img id="pre_process"  src="/img/placeholder.gif" alt="Fireworks" style="float:left;" ></img>
+	<img id="after_process"  src="/img/placeholder.gif" alt="Afterworks" style="padding-left:200px;" ></img>
+	<p id="ddd"></p>
+</div>
+{% endblock %}
