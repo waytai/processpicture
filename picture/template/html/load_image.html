@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block jscript %}
+
+function loadimag(){
+	alert("显示图片");
+
+	$(document).ready(function(){
+	 $("#load_img").attr({src:"/img/liu.jpg"});
+	}
+	)
+
+}
+
+{% endblock %}
+
+{% block content_first %}
+<div style="padding-left:60px;">
+	<h3>this is for upload picture</h3>
+	<p></p>
+	<form action="/upload/" method="post" enctype="multipart/form-data" >
+		<fieldset>
+			<legend>please upload</legend>
+			<input type ="file" name="docfile"/>
+			<input type="submit" value="upload"/>
+			<input type="button" value="show" onclick = "loadimag()"/>
+		</fieldset>	
+	</form>
+	<img id="load_img"  src="/img/placeholder.gif" alt="LoadImage" style="float:left;" ></img>
+</div>
+{% endblock %}
