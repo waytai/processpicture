@@ -26,12 +26,12 @@ urlpatterns = patterns('',
             
                        
     url('^$' , signin , name="signin"),
-    url('^start_template/$' , start_template),
+    url('^start_template/$' , start_template , name ="start_template"),
     # just explain why I start this project
-    url('^image_explain/$' , image_explain),
-    url('^process_img/$' , process_img),
-    url('^contact/$' , contact),
-    url('^about/$' , about),
-    url('^load_image/$' , load_image),
-    url('^upload/$' , upload),
+    url('^image_explain/$' , image_explain , name = "image_explain"),
+    url('^process_img/$' , process_img , name ="process_img"),
+    url('^contact/$' , contact , name ="contact"),
+    url('^about/$' , about , name ="about"),
+    url('^load_image/$' , load_image , name="laod_picture"),
+    url('^upload/$' , upload , name="up_data"),
 )
