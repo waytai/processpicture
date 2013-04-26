@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url( '^img/(?P<path>.*)$', 'django.views.static.serve', 
         { 'document_root': settings.Img_dir}),
     
-    url('^$' , signin),
+    url('^$' , signin , name="signin"),
     url('^start_template/$' , start_template),
     # just explain why I start this project
     url('^image_explain/$' , image_explain),
