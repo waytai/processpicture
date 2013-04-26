@@ -23,6 +23,7 @@ urlpatterns = patterns('',
         { 'document_root': settings.MEDIA_URL}),
     url( '^img/(?P<path>.*)$', 'django.views.static.serve', 
         { 'document_root': settings.Img_dir}),
+            
                        
     url('^$' , signin , name="signin"),
     url('^start_template/$' , start_template),
