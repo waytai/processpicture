@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content_first %}
+<div class = "mes_book" style = padding-left:20px>
+    <p>留言板</p>
+    <form action= {% url message_book %} method="post" >
+        <textarea  rows= 5 cols =2 name="mes_book_text" value=''></textarea>
+        <input name="submit_bt" type="submit" class="message_submit_bt"
+        value="提交" >
+    </form>
+</div>
+{% endblock %}
