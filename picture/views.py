@@ -10,6 +10,7 @@ from django.template.context import RequestContext
 from django.contrib import auth
 from django.http import HttpResponseRedirect , HttpResponse
 import Image , settings,os
+import time
 
 @csrf_exempt
 def login_view(request):
@@ -56,7 +57,16 @@ def contact(request):
 def about(request):
     return render_to_response('about.html',context_instance=RequestContext(request))
 
-
+@csrf_exempt
+def message_book(request):
+    print "&"*2 , "message_book"
+    bt_method = request.method
+    if bt_method == "POST":
+        text_mes = request.POST.get("mes_book_text")
+        time_mes = time.strftime('%Y-%m-%d %H:%M:%S' , time.localtime(time.time()))
+        print text_mes
+    return render_to_response("message_book.html" ,
+            context_instance=RequestContext(request))
 
 
     
