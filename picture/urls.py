@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, include, url
 from views import login_view , signin , start_template
 import settings
-from views import image_explain ,process_img,contact,about
+from views import image_explain ,process_img,contact,about , message_book
 from loadpicture.views import load_image , upload
 
 # Uncomment the next two lines to enable the admin:
@@ -34,4 +34,5 @@ urlpatterns = patterns('',
     url('^about/$' , about , name ="about"),
     url('^load_image/$' , load_image , name="laod_picture"),
     url('^upload/$' , upload , name="up_data"),
+    url('^message_book' , message_book , name="message_book"),
 )
