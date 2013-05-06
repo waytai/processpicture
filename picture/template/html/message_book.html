@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 {% block content_first %}
-<div class = "mes_book" style = padding-left:20px>
+<div class = "mes_book" style = "height:450px;padding-left:20px;">
     <p>留言板</p>
-    <form action= {% url message_book %} method="post" >
+    {% if mes_tx %}
+    {% for mes in mes_tx %}
+    <p><font size = '2'>内容:{{mes.mestext}}</font></p>
+    <p><font size ='0.5'>时间：{{mes.mestime}}</font></p>
+    <hr></hr>
+    {% endfor %}
+    {% endif %}
+</div>
+    <div class = "mes_form" ">
+    <form action= {% url message_book %} method="post" style="padding-left:20px;padding-bottom:20px"; >
         <textarea  rows= 5 cols =2 name="mes_book_text" value=''></textarea>
         <input name="submit_bt" type="submit" class="message_submit_bt"
-        value="提交" >
+        value="提交" style = "margin-bottom:-160px ; margin-left:-160px;">
     </form>
-</div>
+    </div>
 {% endblock %}
+
