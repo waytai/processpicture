@@ -34,5 +34,5 @@ urlpatterns = patterns('',
     url('^about/$' , about , name ="about"),
     url('^load_image/$' , load_image , name="laod_picture"),
     url('^upload/$' , upload , name="up_data"),
-    url('^message_book' , message_book , name="message_book"),
+    url('^message_book/(?P<page>\w{0,5})' , message_book , name="message_book"),
 )
