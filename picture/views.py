@@ -13,6 +13,7 @@ import Image , settings,os
 import time
 import datetime
 from loadpicture.models import Mesbook
+from django.core.paginator import Paginator
 
 
 @csrf_exempt
@@ -61,24 +62,27 @@ def about(request):
     return render_to_response('about.html',context_instance=RequestContext(request))
 
 @csrf_exempt
-def message_book(request):
+def message_book(request , page =''):
     bt_method = request.method
     dic_text = {}
     if bt_method == "POST":
         text_mes = request.POST.get("mes_book_text")
-        #micro_sec = datetime.datetime.now().microsecond
-        #time_mes = time.strftime('%Y-%m-%d %H:%M:%S' , time.localtime(time.time()))
         time_mes = datetime.datetime.now()
         text = Mesbook.objects.create(mestext = text_mes , mestime = time_mes)
         text.save()
         
-        dic_text["mes_tx"] = Mesbook.objects.all()
-        return render_to_response("message_book.html" ,dic_text, context_instance=RequestContext(request))
-    dic_text["mes_tx"] = Mesbook.objects.all()
-    return render_to_response("message_book.html" ,dic_text, context_instance=RequestContext(request))
-
-
-    
-    
+        mes_all = Mesbook.objects.all()
+        mes_page = Paginator(mes_all , 4)
+        last_page = mes_page.num_pages
+        first_mes_page = mes_page.page(1)
+        return render_to_response("message_book.html",
+                {"mes_tx":first_mes_page ,"page":page, "last_page":last_page} , context_instance = RequestContext(request))
+     
+    mes_all = Mesbook.objects.all()
+    mes_page = Paginator(mes_all , 4)
+    last_page = mes_page.num_pages
+    first_mes_page = mes_page.page(page)
+    return render_to_response("message_book.html" , {"mes_tx":first_mes_page ,
+        "page":page,"last_page":last_page} , context_instance =RequestContext(request))
     
     
