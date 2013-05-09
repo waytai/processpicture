@@ -14,11 +14,21 @@ function loadimag(){
 
 function process_pic(){
     alert("处理图片");
+    $.get('/process_pic/' , success, 'html')
     $(document).ready(function(){
     $("#process_img").attr({src:"/img/new_liu.jpg"})
     })
 }
 
+function success(data){
+if (data == 'load'){
+    cancel();
+    window.location.href = window.location.href;
+}
+else{
+cancel();
+}
+}
 
 
 {% endblock %}
