@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from views import login_view , signin , start_template
 import settings
 from views import image_explain ,process_img,contact,about , message_book
-from loadpicture.views import load_image , upload
+from loadpicture.views import load_image , upload , process_picture
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -34,5 +34,6 @@ urlpatterns = patterns('',
     url('^about/$' , about , name ="about"),
     url('^load_image/$' , load_image , name="laod_picture"),
     url('^upload/$' , upload , name="up_data"),
+    url('^process_pic/$' , process_picture , name="process_pic"),
     url('^message_book/(?P<page>\w{0,5})' , message_book , name="message_book"),
 )
