@@ -12,20 +12,32 @@ function loadimag(){
 
 }
 
+function process_pic(){
+    alert("处理图片");
+    $(document).ready(function(){
+    $("#process_img").attr({src:"/img/new_liu.jpg"})
+    })
+}
+
+
+
 {% endblock %}
 
 {% block content_first %}
 <div style="padding-left:60px;">
-	<h3>this is for upload picture</h3>
+	<h3>this is for upload picture , just for jpg format</h3>
 	<p></p>
 	<form action="/upload/" method="post" enctype="multipart/form-data" >
 		<fieldset>
 			<legend>please upload</legend>
 			<input type ="file" name="docfile"/>
 			<input type="submit" value="upload"/>
-			<input type="button" value="show" onclick = "loadimag()"/>
+            <input type="button" value="show" onclick = "loadimag()" style="padding-left:15px;"/>
+            <input type="button" value="process" onclick="process_pic()"
+            style="margin-left:140px;" />
 		</fieldset>	
 	</form>
-	<img id="load_img"  src="/img/placeholder.gif" alt="LoadImage" style="float:left;" ></img>
+    <img id="load_img"  src="/img/placeholder.gif" alt="LoadImage" style="float:left;" ></img>
+    <img id="process_img" src="/img/placeholder.gif" alt="LoadImage" style="margin-left:120px; float:left;"></img>
 </div>
 {% endblock %}
