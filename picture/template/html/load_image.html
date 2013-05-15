@@ -24,8 +24,26 @@ if (data == 'load'){
         })
 }
 else{
-cancel();
+alert("处理失败");
 }
+}
+
+function gray_process(){
+	alert("灰度处理");
+	$.get('/gray_process/',{},gray_success,"html");
+	
+	}
+
+function gray_success(data){
+if(data=="gray_picture"){
+	$(document).ready(function(){
+	$("#process_img").attr({src:"/img/gray_picture.jpg"})
+	}
+	)
+	}
+else if(data =="not_gray_picture"){
+	alert("灰度处理失败");
+	}
 }
 
 
@@ -42,7 +60,8 @@ cancel();
 			<input type="submit" value="upload"/>
             <input type="button" value="show" onclick = "loadimag()" style="padding-left:15px;"/>
             <input type="button" value="process" onclick="process_pic()"
-            style="margin-left:140px;" />
+	    style="margin-left:140px;" />
+	    <input type="button" value="gray" onclick="gray_process()" style="margin-left:30px;"/>
 		</fieldset>	
 	</form>
     <img id="load_img"  src="/img/placeholder.gif" alt="LoadImage" style="float:left;" ></img>
