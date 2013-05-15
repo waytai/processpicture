@@ -36,6 +36,6 @@ def process_picture(request):
     pic_img = pic_img.resize((new_width , new_height) , Image.ANTIALIAS)
     new_liu_path = pic_name.replace("liu" , "new_liu")
     pic_img.save(new_liu_path)
-    return HttpResponse("/load_image/")
+    return HttpResponse("load")
     
     
