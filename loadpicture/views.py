@@ -12,6 +12,17 @@ import ImageFile
 def load_image(request):
     return render_to_response('load_image.html' , context_instance=RequestContext(request))
 
+def change_picture_size(pic_path):
+    change_width = 200
+    change_height = 300
+    pic_path = pic_path.replace('\\' , '/')
+    print "*"*30 , pic_path
+    pic_img = Image.open(pic_path)
+    pic_img = pic_img.resize((change_width , change_height) , Image.ANTIALIAS)
+    new_pic_path = os.path.join(settings.Img_dir , "resize_pic.jpg")
+    pic_img.save(new_pic_path)
+    return 0
+
 @csrf_exempt
 def upload(request):
     f = request.FILES
@@ -21,8 +32,9 @@ def upload(request):
         for chunk in fi.chunks():                
             parser.feed(chunk)  
         img = parser.close()
-        name = os.path.join(settings.Img_dir, 'liu.jpg') 
+        name = os.path.join(settings.Img_dir, 'liu.jpg')
         img.save(name)
+	change_picture_size(name)
         return render_to_response('load_image.html' , context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect("/load_image/")
