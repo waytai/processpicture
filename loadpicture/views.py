@@ -16,7 +16,6 @@ def change_picture_size(pic_path):
     change_width = 200
     change_height = 300
     pic_path = pic_path.replace('\\' , '/')
-    print "*"*30 , pic_path
     pic_img = Image.open(pic_path)
     pic_img = pic_img.resize((change_width , change_height) , Image.ANTIALIAS)
     new_pic_path = os.path.join(settings.Img_dir , "resize_pic.jpg")
