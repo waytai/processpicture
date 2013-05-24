@@ -33,7 +33,7 @@ def upload(request):
         img = parser.close()
         name = os.path.join(settings.Img_dir, 'liu.jpg')
         img.save(name)
-	change_picture_size(name)
+        change_picture_size(name)
         return render_to_response('load_image.html' , context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect("/load_image/")
@@ -54,7 +54,7 @@ def gray_process(request):
     pic_name = os.path.join(settings.Img_dir , "new_liu.jpg")
     gray_pic = os.path.join(settings.Img_dir , "gray_picture.jpg")
     if os.path.exists(pic_name):
-	pic_img = Image.open(pic_name)
+        pic_img = Image.open(pic_name)
         gray_img = pic_img.convert('L')
         gray_img.save(gray_pic)
         ret = "gray_picture"
